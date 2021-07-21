@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}
+ Кофе {{ coffee.name }}
+{% endblock %}
+
+{% block page %}
+
+<a href="{% url 'home' %}">Главная</a>
+    <div>
+         <h2>{{ coffee.name }}</h2>
+          {% if coffee.photo %}
+           <img src="{{ coffee.photo.url }}" alt="{{ coffee.name }}">
+          {% endif %}
+         <div>{{ coffee.short_description }}</div>
+         <div>{{ coffee.price|floatformat:"2" }}</div>
+     </div>
+    <h2>Заказ</h2>
+    <form method="post">
+     {{ form.as_p }}
+    </form>
+{% endblock %}
